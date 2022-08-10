@@ -9,14 +9,14 @@
 #include <sys/wait.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-int get_input(char* str);
+int get_input(char *str);
 void print_cwd(void);
-int process_string(char* str, char** parsed, char** parsedpipe);
-int parse_pipe(char* str, char** strpiped);
-void parse_space(char* str, char** parsed);
-int cmd_handler(char** parsed);
-void exec_args(char** parsed);
-void exec_piped_args(char** parsed, char** parsedpipe);
+int process_string(char *str, char **parsed, char **parsedpipe);
+int parse_pipe(char *str, char **strpiped);
+void parse_space(char *str, char **parsed);
+int cmd_handler(char **parsed);
+void exec_args(char **parsed);
+void exec_piped_args(char **parsed, char **parsedpipe);
 
 #define MAXLETR 1000 /* max number of letters to be supported */
 #define MAXCOMD 100 /* max number of commands to be supported */
