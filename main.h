@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <bits/stdc++.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 int get_input(char *str);
