@@ -24,4 +24,4 @@ void exec_piped_args(char** parsed, char** parsedpipe);
 /* Clearing the shell using escape sequences */
 #define clear() printf("\033[H\033[J")
 
-#endif
+#endif /* MAIN_H */

@@ -6,6 +6,7 @@
  * @parsed: Passed in during function call
  * @parsedpipe: Passed in during function call
  *
+ *
  * Return: void
  */
 
@@ -27,7 +28,6 @@ void exec_piped_args(char **parsed, char **parsedpipe)
 		printf("\nCould not fork!");
 		return;
 	}
-
 	if (pid1 == 0)
 	{
 		/* Child 1 executing.. */
@@ -35,7 +35,6 @@ void exec_piped_args(char **parsed, char **parsedpipe)
 		close(pipefd[0]);
 		dup2(pipefd[1], STDOUT_FILENO);
 		close(pipefd[1]);
-
 		if (execvp(parsed[0], parsed) < 0)
 		{
 			printf("\nCould not execute command 1..");
@@ -46,13 +45,11 @@ void exec_piped_args(char **parsed, char **parsedpipe)
 	{
 		/* Parent executing */
 		pid2 = fork();
-
 		if (pid2 < 0)
 		{
 			printf("\nCould not fork");
 			return;
 		}
-
 		/* Child 2 executing.. */
 		/* It only needs to read at the read end */
 		if (pid2 == 0)
@@ -77,7 +74,8 @@ void exec_piped_args(char **parsed, char **parsedpipe)
 
 /**
  * pid1_is_zero - Executes if pid1 equals zero
- *
+ * @pipefd: Passed in during function call
+ * @parsed: Passed in during function call
  * Return: void
  */
 
@@ -98,7 +96,8 @@ void pid1_is_zero(int *pipefd, char **parsed)
 
 /**
  * pid1_not_zero - Executes if pid1 is not zero
- *
+ * @pipefd: Passed in during function call
+ * @parsedpipe: Passed in during function call
  * Return: void
  */
 

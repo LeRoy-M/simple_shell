@@ -41,7 +41,8 @@ int cmd_handler(char **parsed)
 		return (1);
 	case 4:
 		username = getenv("USER");
-		printf("\nHello %s.\nMind that this is not a place to play around.\nUse help to know more..\n", username);
+		printf("\nHello %s.\nMind that this is not a place to play around.
+		\nUse help to know more..\n", username);
 		return (1);
 	default:
 		break;
