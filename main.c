@@ -3,10 +3,13 @@
 /**
  * main - Entry Point
  *
+ * @ac: Command line argument count
+ * @av: List of commandline arguments
+ *
  * Return: Always 0
  */
 
-int main(void)
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
 {
 	char input_string[MAXLETR], *parsed_args[MAXCOMD];
 	char *parsed_args_piped[MAXCOMD];
@@ -33,7 +36,11 @@ int main(void)
 			exec_args(parsed_args);
 
 		if (exec_flag == 2)
-			exec_piped_args(parsed_args, parsed_args_piped);
+		{
+			/* exec_piped_args(parsed_args, parsed_args_piped); */
+			perror("Piping not available!");
+			return (-1);
+		}
 	}
 	return (0);
 }
