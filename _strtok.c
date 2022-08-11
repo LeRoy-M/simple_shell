@@ -1,39 +1,64 @@
-#include "main.h"
+#include "shell.h"
+/**
+ * check_delim - Checks If A Character Match Any Char *
+ * @c: Character To Check
+ * @str: String To Check
+ * Return: 1 Succes, 0 Failed
+ */
+unsigned int check_delim(char c, const char *str)
+{
+	unsigned int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (c == str[i])
+			return (1);
+	}
+	return (0);
+}
 
 /**
- * _strtok -  copies the string pointed to by src
- * @dest: char type string
- * @src: char type string
- * 
+ * _strtok - Token A String Into Token (strtrok)
+ * @str: String
+ * @delim: Delimiter
+ * Return: Pointer To The Next Token Or NULL
  */
-char* _strtok(char* dest, char src)
+char *_strtok(char *str, const char *delim)
 {
-	char* input = NULL;
+	static char *ts;
+	static char *nt;
+	unsigned int i;
 
-	if (dest != NULL)
-	input = dest;
-
-	if (input == NULL)
-	return NULL;
-
-	char* result = new char[strlen(input) + 1];
-	int i = 0;
- 
-	for (; input[i] != '\0'; i++) {
- 
-	if (input[i] != d)
-		result[i] = input[i];
- 
-	else {
-		result[i] = '\0';
-		input = input + i + 1;
-        	return result;
+	if (str != NULL)
+		nt = str;
+	ts = nt;
+	if (ts == NULL)
+		return (NULL);
+	for (i = 0; ts[i] != '\0'; i++)
+	{
+		if (check_delim(ts[i], delim) == 0)
+			break;
 	}
-    }
- 
-    result[i] = '\0';
-    input = NULL;
- 
-    return result;
+	if (nt[i] == '\0' || nt[i] == '#')
+	{
+		nt = NULL;
+		return (NULL);
+	}
+	ts = nt + i;
+	nt = ts;
+	for (i = 0; nt[i] != '\0'; i++)
+	{
+		if (check_delim(nt[i], delim) == 1)
+			break;
+	}
+	if (nt[i] == '\0')
+		nt = NULL;
+	else
+	{
+		nt[i] = '\0';
+		nt = nt + i + 1;
+		if (*nt == '\0')
+			nt = NULL;
+	}
+	return (ts);
 }
- 
