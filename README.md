@@ -66,3 +66,4 @@ _strcmpdir : compares strings to find dir. find_command : finds command to execu
 (by Jamal Jillo & Leroy Mzughula)
 
 
+last updated on 12th august 2022
